@@ -55,7 +55,7 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           FIREBASE_APP_ID: ${{ secrets.ANDROID_FIREBASE_APP_ID }}
-          # GROUPS: "group1, group2"
+          # GROUPS: "group1, group2" Default value is "team-qa"
           # RELEASE_NOTES: "release notes"
 
 ```
