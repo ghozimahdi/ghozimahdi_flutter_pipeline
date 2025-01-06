@@ -34,29 +34,29 @@ jobs:
 
       - name: Setup Project
         run: setup
-        # env:
-          # ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }} (Optional)
-          # KEYSTORE_KEY_ALIAS: ${{ secrets.KEYSTORE_KEY_ALIAS }} (Optional)
-          # KEYSTORE_STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }} (Optional)
-          # KEYSTORE_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }} (Optional)
-          # SETUP_FILE: your setup file if you have (Optional)
-          # ANDROID_WORKING_DIR: your android dir (Optional) (Default value is : packages/app/android)
-          # FLUTTER_VERSION: (Optional) (Default value is : 3.27.1
-          # KEYSTORE_FILE: (Optional) (Default value is : release/app-keystore.jks)
+        env:
+          encryptKey: ${{ secrets.ENCRYPT_KEY }}
+          keystoreKeyAlias: ${{ secrets.KEYSTORE_KEY_ALIAS }}
+          keystoreStorePassword: ${{ secrets.STORE_PASSWORD }}
+          keystoreKeyPassword: ${{ secrets.KEY_PASSWORD }}
+          # setupFile: your setup file 
+          # androidWorkingDir: your android dir
+          # flutterVersion: 
+          # keystoreFile
 
       - name: Build APK - Flavor Dev Release
-        run: build_apk dev (Available values : dev, staging, prod)
+        run: build_apk dev
         # env:
-          # AUDIT_CODE: (true/false) running code analyze 
-          # BUILD_PATH: default is "packages/app" for non modular module use "." 
+          # auditCode: (true/false) running code analyze
+          # buildPath: default is "packages/app" for non modular module use "."
 
       - name: Deploy APK to Firebase
         run: firebase_deploy dev
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          FIREBASE_APP_ID: ${{ secrets.ANDROID_FIREBASE_APP_ID }}
-          # GROUPS: "group1, group2" Default value is "team-qa"
-          # RELEASE_NOTES: "release notes"
+          appId: ${{ secrets.ANDROID_FIREBASE_APP_ID }}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          # groups: "group1, group2"
+          # releaseNotes: "release notes"
 
 ```
 
