@@ -26,6 +26,7 @@ jobs:
     name: Build and Deploy Android App
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    environment: develop # change your environment (develop/staging/prod)
     container:
       image: mbahgojol/ghozi_fpipe:latest
     steps:
